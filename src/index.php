@@ -1,3 +1,4 @@
 <?php
 
-    include_once "app/Views/backend/index.html";
+    //var_dump($_SERVER);
+    include_once "app/Views/backend/backend.index.php";
