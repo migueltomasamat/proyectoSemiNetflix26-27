@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="web_standard" name="shell-type"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+          rel="stylesheet"/>
+    <style>@layer base {
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            overscroll-behavior: none;
+        }
+
+        main > :first-child {
+            margin-top: 0 !important;
+        }
+
+        main > :last-child {
+            margin-bottom: 0 !important;
+        }
+    }
+
+    ::-webkit-scrollbar {
+        display: none;
+    }</style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">tailwind.config = {
+        "darkMode": "class", "theme": {
+            "extend": {
+                "colors": {
+                    "tertiary-fixed": "#8ff2fe",
+                    "on-secondary-fixed": "#002108",
+                    "on-secondary-fixed-variant": "#00531f",
+                    "surface-container-high": "#2a2a2a",
+                    "surface-variant": "#353534",
+                    "on-tertiary-fixed-variant": "#004f56",
+                    "on-primary-fixed-variant": "#930007",
+                    "on-primary-fixed": "#410001",
+                    "on-tertiary": "#00363c",
+                    "outline-variant": "#5e3f3b",
+                    "on-primary-container": "#fff7f6",
+                    "tertiary-fixed-dim": "#72d5e1",
+                    "primary-fixed": "#ffdad5",
+                    "background": "#131313",
+                    "on-secondary-container": "#003712",
+                    "on-tertiary-container": "#ecfdff",
+                    "inverse-surface": "#e5e2e1",
+                    "surface-container-highest": "#353534",
+                    "error": "#ffb4ab",
+                    "on-error-container": "#ffdad6",
+                    "outline": "#af8782",
+                    "on-background": "#e5e2e1",
+                    "on-surface-variant": "#e9bcb6",
+                    "surface-tint": "#ffb4aa",
+                    "on-tertiary-fixed": "#001f23",
+                    "secondary-fixed-dim": "#55e074",
+                    "error-container": "#93000a",
+                    "primary": "#ffb4aa",
+                    "on-primary": "#690003",
+                    "surface": "#131313",
+                    "on-error": "#690005",
+                    "surface-container-low": "#1c1b1b",
+                    "inverse-on-surface": "#313030",
+                    "surface-container-lowest": "#0e0e0e",
+                    "secondary": "#55e074",
+                    "on-surface": "#e5e2e1",
+                    "tertiary": "#72d5e1",
+                    "inverse-primary": "#c0000c",
+                    "secondary-fixed": "#74fe8e",
+                    "secondary-container": "#02ad49",
+                    "primary-fixed-dim": "#ffb4aa",
+                    "surface-dim": "#131313",
+                    "tertiary-container": "#007f8a",
+                    "primary-container": "#e50914",
+                    "surface-bright": "#393939",
+                    "surface-container": "#201f1f",
+                    "on-secondary": "#003913"
+                },
+                "borderRadius": {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                "spacing": {
+                    "margin": "3.5rem",
+                    "gutter-lg": "1.5rem",
+                    "space-2xl": "4rem",
+                    "space-lg": "1.5rem",
+                    "gutter-sm": "0.75rem",
+                    "space-xl": "2.5rem",
+                    "space-md": "1rem",
+                    "space-xs": "0.25rem",
+                    "space-sm": "0.5rem",
+                    "gutter": "1rem",
+                    "margin-mobile": "1rem",
+                    "margin-tablet": "2rem"
+                },
+                "fontFamily": {
+                    "headline-xl-mobile": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-xl": ["Inter"],
+                    "label-md": ["Inter"],
+                    "display-hero": ["Inter"],
+                    "display-hero-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "badge-spec": ["Inter"]
+                },
+                "fontSize": {
+                    "headline-xl-mobile": ["24px", {
+                        "lineHeight": "30px",
+                        "letterSpacing": "-0.01em",
+                        "fontWeight": "700"
+                    }],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700"}],
+                    "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "display-hero": ["56px", {"lineHeight": "64px", "letterSpacing": "-0.03em", "fontWeight": "900"}],
+                    "display-hero-mobile": ["32px", {
+                        "lineHeight": "38px",
+                        "letterSpacing": "-0.02em",
+                        "fontWeight": "800"
+                    }],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "badge-spec": ["10px", {"lineHeight": "12px", "letterSpacing": "0.06em", "fontWeight": "800"}]
+                }
+            }
+        }
+    };</script>
+</head>
+<body class="bg-surface font-body-md text-on-surface min-h-screen">
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-gradient-to-b from-surface-container-lowest/90 via-surface-container-lowest/60 to-transparent backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.6)]">
+    <div class="h-16 w-full px-margin-mobile md:px-margin-tablet xl:px-margin flex items-center justify-between gap-space-lg">
+        <div class="flex items-center gap-space-xl flex-1 min-w-0"><a
+                class="flex items-center gap-space-sm flex-shrink-0" data-path="inicio" href="#"><img alt="Netflix Logo"
+                                                                                                      class="h-8 w-auto object-contain"
+                                                                                                      src="https://lh3.googleusercontent.com/aida/AEtjO1VSjgSVFjrU9QddTzdlHWZV0NEC9PhE4hUgtIzqQ6V3ahPnHsEWsKBvv655Co2PpeGI13d8fRGYBn1VY9jxRB_D2-9wOEypwMGmyQeCxHVNkoE6pPfjoYQq0zBOFIBhrEMHsZcN-ssGRHRIDsRhm4-kpk3P25ZIF5Xa9qbIeZkEznp_6kwDE9kR1_7N75buVMCkVjvCVU1A2MorZ1_hG7rY8V5e8DvyQ6lWfa1-6ZHDIa3GVnk7oKSTuQ"/><span
+                class="sr-only">Netflix</span></a>
+            <nav class="hidden lg:flex items-center gap-space-lg overflow-x-auto py-space-xs"
+                 data-active-classes="text-on-surface font-headline-md font-bold tracking-normal"><a aria-current="page"
+                                                                                                     class="transition-colors whitespace-nowrap text-on-surface font-headline-md font-bold tracking-normal"
+                                                                                                     data-path="inicio"
+                                                                                                     href="#">Inicio</a><a
+                    class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap"
+                    data-path="series-tv" href="#">Series TV</a><a
+                    class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap"
+                    data-path="peliculas" href="#">Películas</a><a
+                    class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap"
+                    data-path="videojuegos" href="#">Videojuegos</a><a
+                    class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap"
+                    data-path="novedades-populares" href="#">Novedades populares</a><a
+                    class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap"
+                    data-path="mi-lista" href="#">Mi lista</a></nav>
+        </div>
+        <div class="flex items-center gap-space-md flex-shrink-0">
+            <div class="relative flex items-center">
+                <button aria-label="Buscar"
+                        class="flex items-center justify-center p-space-xs text-on-surface-variant hover:text-on-surface transition-colors"
+                        type="button"><span class="material-symbols-outlined text-[22px]">search</span></button>
+            </div>
+            <button aria-label="Notificaciones"
+                    class="relative flex items-center justify-center p-space-xs text-on-surface-variant hover:text-on-surface transition-colors"
+                    type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span
+                    class="absolute top-1 right-1 w-2 h-2 rounded-full bg-primary-container ring-2 ring-surface"></span>
+            </button>
+            <div class="flex items-center gap-space-xs cursor-pointer group relative py-space-xs">
+                <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span
+                        class="material-symbols-outlined text-on-primary text-[18px]">person</span></div>
+                <span class="material-symbols-outlined text-[18px] text-on-surface-variant group-hover:text-on-surface transition-transform duration-200 group-hover:rotate-180">arrow_drop_down</span>
+            </div>
+        </div>
+    </div>
+</header>
+<main class="w-full pt-16 bg-surface min-h-[calc(100vh-16rem)]">
+    <div class="flex flex-col w-full relative select-none">
+        <!-- Cinematic Hero Banner (Bleeding subtly under shell header) -->
+        <section
+                class="relative w-full h-[901px] min-h-[580px] max-h-[920px] -mt-16 flex flex-col justify-end overflow-hidden">
+            <!-- Background Cinematic Scrim & Image -->
+            <div class="absolute inset-0 bg-cover bg-center w-full h-full transform scale-105 transition-transform duration-1000 ease-out"
+                 data-alt="Cinematic wide shot of a futuristic cyberpunk Neo-Tokyo city drenched in deep neon magenta, electric cyan, and dark shadows. A towering cybernetic monolith looms behind rain-slicked skyscrapers with holographic advertisements. In the midground, a female rebel android with luminous optical circuits and a shadowed street hacker stand back to back atop a rain-washed skyscraper roof looking down on a dystopian glowing metropolis. Photorealistic, hyper-detailed, 8k resolution, cinematic lighting with anamorphic lens flare and deep atmospheric mist."
+                 style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAG64nlDeQ0KmBc-PmoAdco0fRVTla9Mre_ZC3egIrXQV2erSfmYMFBK5RinJtj5wkztpXypRg7uULFokwHZf3SEVN7Rq4_Ad68_gNTc25yCEEUVVbiXSoRbG6TnGVDqg6wKtGPO2-lz9KU5jnh1MwPyzt47AOs6PXSPJuMTKpMFkX7hnekTNWpb_RHnVRn9-DQKOLX2xAUjUt3U_0DVDMQ7oyJeDqqIw8yzL7rqEWcIuz7qnjP89gp')"></div>
+            <!-- Scrim Multi-Layer Gradients for Legibility and Shell Integration -->
+            <div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-surface-container-lowest via-surface-container-lowest/80 to-transparent w-full md:w-3/4 lg:w-3/5"></div>
+            <div class="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-surface-container-lowest/90 via-surface-container-lowest/30 to-transparent"></div>
+            <!-- Hero Content Container -->
+            <div class="relative z-10 w-full px-margin-mobile md:px-margin-tablet xl:px-margin pb-space-xl pt-24 max-w-4xl flex flex-col items-start gap-space-md">
+                <!-- Netflix Series Brand Pill -->
+                <div class="flex items-center gap-space-xs tracking-widest text-primary-container">
+                    <span class="font-headline-md text-headline-md font-black tracking-tighter text-primary-container">N</span>
+                    <span class="font-label-sm text-label-sm font-extrabold uppercase tracking-[0.3em] text-on-surface/90">SERIES</span>
+                </div>
+                <!-- Main Display Title -->
+                <div class="flex flex-col gap-1">
+                    <h1 class="font-display-hero text-display-hero uppercase tracking-tight text-on-surface drop-shadow-2xl max-w-3xl leading-none">
+                        CYBER CHRONICLES
+                    </h1>
+                    <span class="font-headline-xl text-headline-xl font-black text-tertiary-fixed tracking-widest uppercase opacity-90 drop-shadow-lg">
+          NEO-TOKYO
+        </span>
+                </div>
+                <!-- Top 10 Ranking Ribbon & Quality Badges -->
+                <div class="flex flex-wrap items-center gap-space-sm pt-space-xs">
+                    <div class="flex items-center gap-1.5 bg-primary-container text-on-primary-container px-2 py-1 rounded-sm shadow-md">
+                        <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+                        <span class="font-label-sm text-label-sm font-black uppercase tracking-wider">Top 10 en películas hoy</span>
+                    </div>
+                    <span class="font-label-md text-label-md font-bold text-secondary">98% de coincidencia</span>
+                    <span class="px-1.5 py-0.5 rounded-sm bg-surface-variant/80 font-badge-spec text-badge-spec uppercase text-on-surface">16+</span>
+                    <span class="px-1.5 py-0.5 rounded-sm bg-surface-variant/80 font-badge-spec text-badge-spec uppercase text-on-surface">4K Ultra HD</span>
+                    <span class="px-1.5 py-0.5 rounded-sm bg-surface-variant/80 font-badge-spec text-badge-spec uppercase text-on-surface">Dolby Atmos</span>
+                    <span class="font-label-sm text-label-sm text-on-surface-variant font-medium">1 Temporada</span>
+                </div>
+                <!-- Synopsis Description -->
+                <p class="font-body-lg text-body-lg text-on-surface/90 max-w-2xl line-clamp-3 drop-shadow leading-relaxed">
+                    En un futuro distópico dominado por mega-corporaciones, un hacker prodigio y una androide rebelde
+                    descubren una conspiración neural clasificada que cambiará irrevocablemente el destino de la
+                    humanidad.
+                </p>
+                <!-- Primary Action Buttons Row -->
+                <div class="flex items-center gap-space-md pt-space-sm">
+                    <button class="group flex items-center justify-center gap-space-xs px-space-xl py-space-sm bg-white text-black font-headline-md text-headline-md rounded-lg shadow-2xl hover:bg-white/80 active:scale-95 transition-all duration-200"
+                            type="button">
+                        <span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                        <span>Reproducir</span>
+                    </button>
+                    <button class="flex items-center justify-center gap-space-xs px-space-lg py-space-sm bg-surface-container-high/80 hover:bg-surface-variant backdrop-blur-md text-on-surface font-headline-md text-headline-md rounded-lg shadow-lg active:scale-95 transition-all duration-200"
+                            type="button">
+                        <span class="material-symbols-outlined text-[24px]">info</span>
+                        <span>Más información</span>
+                    </button>
+                    <button aria-label="Agregar a mi lista"
+                            class="w-11 h-11 rounded-full bg-surface-container-lowest/60 hover:bg-surface-variant/80 backdrop-blur-md flex items-center justify-center text-on-surface hover:text-white transition-colors"
+                            type="button">
+                        <span class="material-symbols-outlined text-[22px]">add</span>
+                    </button>
+                </div>
+            </div>
+            <!-- Bottom Controls & Age Rating Marker -->
+            <div class="absolute right-0 bottom-space-xl z-20 flex items-center gap-space-md">
+                <!-- Mute/Unmute Audio Toggle -->
+                <button aria-label="Silenciar o activar audio"
+                        class="w-10 h-10 rounded-full bg-surface-container-lowest/60 hover:bg-surface-container-high/80 backdrop-blur-md text-on-surface flex items-center justify-center transition-colors shadow-lg"
+                        id="hero-audio-toggle" type="button">
+                    <span class="material-symbols-outlined text-[20px]" id="hero-audio-icon">volume_off</span>
+                </button>
+                <!-- Rating Flag with Sleek Accent Bar -->
+                <div class="bg-surface-container-lowest/70 backdrop-blur-md py-1.5 pl-3 pr-6 flex items-center gap-2 border-l-4 border-l-outline">
+                    <span class="font-label-sm text-label-sm font-bold text-on-surface">16+</span>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant font-medium hidden sm:inline">Violencia, lenguaje</span>
+                </div>
+            </div>
+        </section>
+        <!-- Filter Pills Bar -->
+        <section class="w-full px-margin-mobile md:px-margin-tablet xl:px-margin -mt-6 z-20 mb-space-lg">
+            <div class="flex items-center gap-space-sm overflow-x-auto py-2 no-scrollbar">
+                <button class="px-space-md py-1.5 rounded-full bg-surface-container-highest text-on-surface font-label-md text-label-md shadow-md hover:bg-surface-bright transition-all whitespace-nowrap">
+                    Todos
+                </button>
+                <button class="px-space-md py-1.5 rounded-full bg-surface-container-low/80 hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-md text-label-md backdrop-blur-sm transition-all whitespace-nowrap">
+                    Películas
+                </button>
+                <button class="px-space-md py-1.5 rounded-full bg-surface-container-low/80 hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-md text-label-md backdrop-blur-sm transition-all whitespace-nowrap">
+                    Series
+                </button>
+                <button class="px-space-md py-1.5 rounded-full bg-surface-container-low/80 hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-md text-label-md backdrop-blur-sm transition-all whitespace-nowrap flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-[16px] text-tertiary">sports_esports</span>
+                    Videojuegos
+                </button>
+                <button class="px-space-md py-1.5 rounded-full bg-surface-container-low/80 hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-md text-label-md backdrop-blur-sm transition-all whitespace-nowrap">
+                    Mi lista
+                </button>
+                <button class="px-space-md py-1.5 rounded-full bg-surface-container-low/80 hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-md text-label-md backdrop-blur-sm transition-all whitespace-nowrap flex items-center gap-1">
+                    Categorías
+                    <span class="material-symbols-outlined text-[16px]">arrow_drop_down</span>
+                </button>
+            </div>
+        </section>
+        <!-- Content Rows Stack -->
+        <div class="flex flex-col gap-space-2xl w-full pb-space-2xl">
+            <!-- Row 1: Continuar viendo para Carlos -->
+            <section
+                    class="flex flex-col gap-space-sm group/row relative px-margin-mobile md:px-margin-tablet xl:px-margin">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-baseline gap-space-sm">
+                        <h2 class="font-headline-lg text-headline-lg text-on-surface hover:text-white transition-colors cursor-pointer flex items-center gap-1">
+                            Continuar viendo para Carlos
+                            <span class="material-symbols-outlined text-[18px] text-tertiary opacity-0 group-hover/row:opacity-100 transition-opacity">chevron_right</span>
+                        </h2>
+                    </div>
+                    <div class="flex items-center gap-1 opacity-0 group-hover/row:opacity-100 transition-opacity">
+                        <button aria-label="Anterior"
+                                class="w-8 h-8 rounded-full bg-surface-container-high hover:bg-surface-variant flex items-center justify-center text-on-surface transition-colors"
+                                onclick="scrollRow('continue-row', -1)">
+                            <span class="material-symbols-outlined text-[20px]">chevron_left</span>
+                        </button>
+                        <button aria-label="Siguiente"
+                                class="w-8 h-8 rounded-full bg-surface-container-high hover:bg-surface-variant flex items-center justify-center text-on-surface transition-colors"
+                                onclick="scrollRow('continue-row', 1)">
+                            <span class="material-symbols-outlined text-[20px]">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Carousel Cards Track -->
+                <div class="grid grid-flow-col auto-cols-[82%] sm:auto-cols-[46%] md:auto-cols-[31%] lg:auto-cols-[23.5%] gap-gutter overflow-x-auto no-scrollbar scroll-smooth py-2"
+                     id="continue-row">
+                    <!-- Continue Card 1 -->
+                    <div class="flex flex-col bg-surface-container-low rounded-lg overflow-hidden group shadow-lg transition-transform duration-300 hover:scale-[1.03] hover:z-20">
+                        <div class="relative aspect-video w-full overflow-hidden bg-surface-container-lowest">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                 data-alt="Moody dark thriller crime scene in an abandoned subway station with flickering halogen lights, deep shadows, and wet concrete reflections. Two detectives examine an illuminated bio-organic artifact on the tracks. Atmospheric mist, cool teal and warm amber cinematic highlights."
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOXbTi6D9jaKBvCIEWGlsRM88e8UjHlOSU6tkXXhMLndikZ17tO7VkxevxWHeYuRPNCTCQSIrWMtgIuYoc4TLUgZWpSP00ONLUnW07aMVtzGFQnTSEjvwxAIe7I5Lxc4JpnuX5xpYrVSR8K9fBeqyMOVOXRjnCQs8AbZvYa6cdVY6Cio3U57E1UPP36tvtXOgBd3aulEzSLvtNNI5Ezy-cdXFCBJnOI7hI8pswruniF_Qjk0tIgcIv"/>
+                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <button class="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center shadow-xl transform scale-90 group-hover:scale-100 transition-transform">
+                                    <span class="material-symbols-outlined text-[28px]"
+                                          style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                                </button>
+                            </div>
+                            <!-- Progress Bar -->
+                            <div class="absolute bottom-0 inset-x-0 h-1 bg-surface-variant">
+                                <div class="h-full bg-primary-container" style="width: 72%;"></div>
+                            </div>
+                        </div>
+                        <div class="p-space-sm flex flex-col gap-2">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="font-headline-md text-[15px] font-bold text-on-surface truncate">Stranger Mysteries</span>
+                                    <span class="font-label-sm text-label-sm text-on-surface-variant">T2:E4</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-on-surface-variant">
+                                    <button class="p-1 hover:text-on-surface rounded-full transition-colors"><span
+                                            class="material-symbols-outlined text-[18px]">thumb_up</span></button>
+                                    <button class="p-1 hover:text-on-surface rounded-full transition-colors"><span
+                                            class="material-symbols-outlined text-[18px]">info</span></button>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between font-body-sm text-body-sm text-on-surface-variant">
+                                <span>Quedan 24 min</span>
+                                <span class="font-badge-spec text-badge-spec px-1 bg-surface-container-high rounded text-on-surface">HD</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Continue Card 2 -->
+                    <div class="flex flex-col bg-surface-container-low rounded-lg overflow-hidden group shadow-lg transition-transform duration-300 hover:scale-[1.03] hover:z-20">
+                        <div class="relative aspect-video w-full overflow-hidden bg-surface-container-lowest">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                 data-alt="Deep space exploration vessel drifting beside a colossal golden gas giant with intricate crystalline planetary rings. Distant stars and a cold cosmic nebula illuminate the metallic hull of the spaceship. Cinematic sci-fi epic, realistic stellar lighting."
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnKiXI-kpPgO9X0UBza3eXUwKNApVOOnu_-VeSMbpEeVGHKaTR2Yc7Lr4H3MpmTEHI5JiVHyx3Zi0vpTgqW60xUyYa6uj9PrFhFYfJ7qEP6vVHFLH_BkoGSd9Jrp47Hw4D8Iko_MeHolq92Kbj0eTKHBFIPmBohN4DNzIEj9icNnMKliIERFL79ix6Mo-h4frUNF4SEOpr_VrOk7tGY-dVmWfQ7ZLfjNJPc0mQrbWQCyHsLD0YKY6M"/>
+                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <button class="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center shadow-xl transform scale-90 group-hover:scale-100 transition-transform">
+                                    <span class="material-symbols-outlined text-[28px]"
+                                          style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                                </button>
+                            </div>
+                            <div class="absolute bottom-0 inset-x-0 h-1 bg-surface-variant">
+                                <div class="h-full bg-primary-container" style="width: 40%;"></div>
+                            </div>
+                        </div>
+                        <div class="p-space-sm flex flex-col gap-2">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="font-headline-md text-[15px] font-bold text-on-surface truncate">The Last Horizon</span>
+                                    <span class="font-label-sm text-label-sm text-on-surface-variant">T1:E8</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-on-surface-variant">
+                                    <button class="p-1 hover:text-on-surface rounded-full transition-colors"><span
+                                            class="material-symbols-outlined text-[18px]">thumb_up</span></button>
+                                    <button class="p-1 hover:text-on-surface rounded-full transition-colors"><span
+                                            class="material-symbols-outlined text-[18px]">info</span></button>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between font-body-sm text-body-sm text-on-surface-variant">
+                                <span>Quedan 38 min</span>
+                                <span class="font-badge-spec text-badge-spec px-1 bg-surface-container-high rounded text-on-surface">4K UHD</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Continue Card 3 -->
+                    <div class="flex flex-col bg-surface-container-low rounded-lg overflow-hidden group shadow-lg transition-transform duration-300 hover:scale-[1.03] hover:z-20">
+                        <div class="relative aspect-video w-full overflow-hidden bg-surface-container-lowest">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                 data-alt="Intense high-tech tactical cockpit with a pilot wearing neural interfaces surrounded by floating semi-transparent blue holographic tactical telemetry and data streams. Dark cockpit interior with ambient cockpit warning lights."
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKzoU2flEyKIGmJ1Y0jyjhbITwOo_vnJxtCraymA0GaDtvWixIgw3JWkeNE4fBIFkIj-rxXD8RafNWHQGn2p72CF_UBQ1F2Eef2vcec1wI-8RvlKX-U95yFpqig7e3W2XrMmdtFoDIMw0tuRgp5cHdoKl512BZksIplLOmUM7ybYSiASVbPBPxu0yQLxOK2ziMmq04bA_AKt_N32Ue9Qr9ZBa-U2CveU6GBs7fIHDRv9rnMfTEJ1Bp"/>
+                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <button class="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center shadow-xl transform scale-90 group-hover:scale-100 transition-transform">
+                                    <span class="material-symbols-outlined text-[28px]"
+                                          style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                                </button>
+                            </div>
+                            <div class="absolute bottom-0 inset-x-0 h-1 bg-surface-variant">
+                                <div class="h-full bg-primary-container" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="p-space-sm flex flex-col gap-2">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="font-headline-md text-[15px] font-bold text-on-surface truncate">Cyberpunk Protocol</span>
+                                    <span class="font-label-sm text-label-sm text-on-surface-variant">T3:E2</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-on-surface-variant">
+                                    <button class="p-1 hover:text-on-surface rounded-full transition-colors"><span
+                                            class="material-symbols-outlined text-[18px]">thumb_up</span></button>
+                                    <button class="p-1 hover:text-on-surface rounded-full transition-colors"><span
+                                            class="material-symbols-outlined text-[18px]">info</span></button>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between font-body-sm text-body-sm text-on-surface-variant">
+                                <span>Quedan 11 min</span>
+                                <span class="font-badge-spec text-badge-spec px-1 bg-surface-container-high rounded text-on-surface">HDR</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Continue Card 4 -->
+                    <div class="flex flex-col bg-surface-container-low rounded-lg overflow-hidden group shadow-lg transition-transform duration-300 hover:scale-[1.03] hover:z-20">
+                        <div class="relative aspect-video w-full overflow-hidden bg-surface-container-lowest">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                 data-alt="Victorian London cobblestone alleyway enveloped in dense swirling fog under a moonlit sky. A lone silhouetted investigator with trench coat and fedora holds a glowing lantern examining mysterious glowing symbols etched on a stone wall."
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoaNK35bXaca1NnrNXcCd_PAAqqNcScjCrqAgQP01MrhNwYRzfGaHbotGvZMnRgUjX23WsYDWXCGnlLnQ92D7zWL6o95VIo3uGd7eCiDOV1baE6Ef1e3fK156-u_lzTpGCEEGSaok44BjOWblvW5PFmuWO13c9s7Y9fjrqk-AsqeY8Cwe7ZaYiieRtouTCRlgAVXktI6wQv950yfTnbIoEB4gOorbvxVpCR-Yfc0CpIqz-YmNduTPv"/>
+                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <button class="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center shadow-xl transform scale-90 group-hover:scale-100 transition-transform">
+                                    <span class="material-symbols-outlined text-[28px]"
+                                          style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                                </button>
+                            </div>
+                            <div class="absolute bottom-0 inset-x-0 h-1 bg-surface-variant">
+                                <div class="h-full bg-primary-container" style="width: 25%;"></div>
+                            </div>
+                        </div>
+                        <div class="p-space-sm flex flex-col gap-2">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="font-headline-md text-[15px] font-bold text-on-surface truncate">Shadow of Mayfair</span>
+                                    <span class="font-label-sm text-label-sm text-on-surface-variant">Película</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-on-surface-variant">
+                                    <button class="p-1 hover:text-on-surface rounded-full transition-colors"><span
+                                            class="material-symbols-outlined text-[18px]">thumb_up</span></button>
+                                    <button class="p-1 hover:text-on-surface rounded-full transition-colors"><span
+                                            class="material-symbols-outlined text-[18px]">info</span></button>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between font-body-sm text-body-sm text-on-surface-variant">
+                                <span>Quedan 1h 12m</span>
+                                <span class="font-badge-spec text-badge-spec px-1 bg-surface-container-high rounded text-on-surface">Dolby Vision</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Row 2: Tendencias ahora (Wide Cinematic Cards) -->
+            <section
+                    class="flex flex-col gap-space-sm group/row relative px-margin-mobile md:px-margin-tablet xl:px-margin">
+                <div class="flex items-center justify-between">
+                    <h2 class="font-headline-lg text-headline-lg text-on-surface hover:text-white transition-colors cursor-pointer flex items-center gap-1">
+                        Tendencias ahora
+                        <span class="material-symbols-outlined text-[18px] text-tertiary opacity-0 group-hover/row:opacity-100 transition-opacity">chevron_right</span>
+                    </h2>
+                    <div class="flex items-center gap-1 opacity-0 group-hover/row:opacity-100 transition-opacity">
+                        <button aria-label="Anterior"
+                                class="w-8 h-8 rounded-full bg-surface-container-high hover:bg-surface-variant flex items-center justify-center text-on-surface transition-colors"
+                                onclick="scrollRow('trending-row', -1)">
+                            <span class="material-symbols-outlined text-[20px]">chevron_left</span>
+                        </button>
+                        <button aria-label="Siguiente"
+                                class="w-8 h-8 rounded-full bg-surface-container-high hover:bg-surface-variant flex items-center justify-center text-on-surface transition-colors"
+                                onclick="scrollRow('trending-row', 1)">
+                            <span class="material-symbols-outlined text-[20px]">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="grid grid-flow-col auto-cols-[80%] sm:auto-cols-[45%] md:auto-cols-[30%] lg:auto-cols-[23%] xl:auto-cols-[19%] gap-gutter overflow-x-auto no-scrollbar scroll-smooth py-2"
+                     id="trending-row">
+                    <!-- Trending Card 1 -->
+                    <div class="relative group cursor-pointer rounded-lg overflow-hidden bg-surface-container-low transition-all duration-300 hover:scale-105 hover:z-30 hover:shadow-2xl flex flex-col">
+                        <div class="relative aspect-video w-full overflow-hidden">
+                            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                 data-alt="Dramatically lit armored bounty hunter walking through a sandstorm on a desolate alien planet with twin red suns setting on the horizon. Dust storms swirling around rugged futuristic exo-suit with illuminated orange visors."
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXY8adVRIl7Htt-KKHU0ujwtyJzyeE4Ts8tiHWQM3OlrqlubkmEDRQ8NQHWbB_qhyV9L7aPtBQPyqWsGS6KEZWBM7ezoPtPZ3SKaj1v4Tl5mNR2xHuIAmcfRnO65aA0ycfehtJTZc6pUj3q1hXK1h938pMrT0_uoeQmfgYOyOqo-qDZhDoNi12AD8bbxWmRkJx1vBJfIT7Q03hQtJG_FkNzG2PSyp2A8R6xAm26KdSkT2u9IMsPZzo"/>
+                            <span class="absolute top-2 left-2 px-1.5 py-0.5 rounded-sm bg-primary-container text-white font-badge-spec text-badge-spec uppercase">TOP 1</span>
+                        </div>
+                        <div class="p-space-sm flex flex-col gap-1.5 bg-surface-container">
+                            <div class="flex items-center justify-between">
+                                <span class="font-label-md text-label-md font-bold text-secondary">98% Coincidencia</span>
+                                <span class="px-1.5 py-0.5 rounded bg-surface-variant text-[10px] font-bold text-on-surface">16+</span>
+                            </div>
+                            <h3 class="font-headline-md text-[15px] font-bold text-on-surface truncate">Ecos del
+                                Vacío</h3>
+                            <div class="flex items-center gap-1.5 text-body-sm text-body-sm text-on-surface-variant">
+                                <span>Ciencia Ficción</span>
+                                <span>•</span>
+                                <span>Thriller</span>
+                                <span>•</span>
+                                <span>Acción</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Trending Card 2 -->
+                    <div class="relative group cursor-pointer rounded-lg overflow-hidden bg-surface-container-low transition-all duration-300 hover:scale-105 hover:z-30 hover:shadow-2xl flex flex-col">
+                        <div class="relative aspect-video w-full overflow-hidden">
+                            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                 data-alt="Moody cinematic frame of a luxury mid-century modern living room surrounded by snowy pine forests visible through floor-to-ceiling glass windows. A woman in emerald silk dress looks anxiously over her shoulder as headlights sweep across the ceiling."
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuAInb-vcwHenmMvQaDD1Eco7oqdMZMqyFGC3kJuwG_GnWacjMagqqVWrVL5nEjVhgIYNlMiyUqFdQkJqoqlb3dRc4LD4tS8szFZdn_T2r2EP1Xo2SCRal1RNImsArC3UO2n9rLMw47hYsvtwJx7MZgOTvswnQMG0fOqsB9GRdRRIngTC8om7MexNJA-2Vu7heG7J0RUo1ho0aivbjkK7HxHVpuav6DNci-ig5zIA3tSgPwEhE4cvnyd"/>
+                            <span class="absolute top-2 left-2 px-1.5 py-0.5 rounded-sm bg-primary-container text-white font-badge-spec text-badge-spec uppercase">TOP 2</span>
+                        </div>
+                        <div class="p-space-sm flex flex-col gap-1.5 bg-surface-container">
+                            <div class="flex items-center justify-between">
+                                <span class="font-label-md text-label-md font-bold text-secondary">95% Coincidencia</span>
+                                <span class="px-1.5 py-0.5 rounded bg-surface-variant text-[10px] font-bold text-on-surface">18+</span>
+                            </div>
+                            <h3 class="font-headline-md text-[15px] font-bold text-on-surface truncate">Venganza de
+                                Cristal</h3>
+                            <div class="flex items-center gap-1.5 text-body-sm text-body-sm text-on-surface-variant">
+                                <span>Suspense</span>
+                                <span>•</span>
+                                <span>Misterio</span>
+                                <span>•</span>
+                                <span>Drama</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Trending Card 3 -->
+                    <div class="relative group cursor-pointer rounded-lg overflow-hidden bg-surface-container-low transition-all duration-300 hover:scale-105 hover:z-30 hover:shadow-2xl flex flex-col">
+                        <div class="relative aspect-video w-full overflow-hidden">
+                            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                 data-alt="High-speed racing cars drifting around a rain-slicked Tokyo street corner at night surrounded by blinding neon signs and cheering rooftop crowds. Vibrant streaks of red and teal tail lights motion-blurred."
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-GSpB_q18f9fBXMPgLGIp-secIeVPqKma31py46SUjVPFGxpXCmzNYrPqXfWsCnPHTdoJ6yBt2td_KkwjwR4E9vaXV1SsN37GQCm8EzptDOHobQi8obmE-BlDcjNibbz8WT7v_mkatHArydN8h2nhg37DNh1i5CTs8zh4cN-a61rMT0BxchkHzZBkzxeEJp48Vhki-iBoOqpeys1vsrQvGgL9qq9wd_4LImaaO83VGGKf38nbI3yp"/>
+                            <span class="absolute top-2 left-2 px-1.5 py-0.5 rounded-sm bg-primary-container text-white font-badge-spec text-badge-spec uppercase">TOP 3</span>
+                        </div>
+                        <div class="p-space-sm flex flex-col gap-1.5 bg-surface-container">
+                            <div class="flex items-center justify-between">
+                                <span class="font-label-md text-label-md font-bold text-secondary">94% Coincidencia</span>
+                                <span class="px-1.5 py-0.5 rounded bg-surface-variant text-[10px] font-bold text-on-surface">13+</span>
+                            </div>
+                            <h3 class="font-headline-md text-[15px] font-bold text-on-surface truncate">Overdrive:
+                                Apex</h3>
+                            <div class="flex items-center gap-1.5 text-body-sm text-body-sm text-on-surface-variant">
+                                <span>Adrenalina</span>
+                                <span>•</span>
+                                <span>Acción</span>
+                                <span>•</span>
+                                <span>Autos</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Trending Card 4 -->
+                    <div class="relative group cursor-pointer rounded-lg overflow-hidden bg-surface-container-low transition-all duration-300 hover:scale-105 hover:z-30 hover:shadow-2xl flex flex-col">
+                        <div class="relative aspect-video w-full overflow-hidden">
+                            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                 data-alt="Ancient mythological temple overgrown with bioluminescent moss and exotic glowing jungle flora. A valiant warrior wielding an electric arc-blade faces a giant crystalline serpent beast emerging from ceremonial water."
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmFPGbrkQESxnRCFBtMgaMiKFYR8lAGAeJMQC1biGhrKwZ2WX4Y12m4RvTCMk7nEyB5r_ar9bwNHJtFXOdwY2r9TOKRHXj_zcuy6ILWkes5M6RiEho2AMVHHjmx-g3mXafqzi0YdOGru1zRwgR4IV72kHWWgkMjkxkAbULOHjgqnjR7oYnOQR-K1ZrgqYo73bG1PcsOZcSz8QI2LMResGkyTNfK7kIb4gAmWF0jqJW5LcaJKLq05O9"/>
+                            <span class="absolute top-2 left-2 px-1.5 py-0.5 rounded-sm bg-primary-container text-white font-badge-spec text-badge-spec uppercase">TOP 4</span>
+                        </div>
+                        <div class="p-space-sm flex flex-col gap-1.5 bg-surface-container">
+                            <div class="flex items-center justify-between">
+                                <span class="font-label-md text-label-md font-bold text-secondary">91% Coincidencia</span>
+                                <span class="px-1.5 py-0.5 rounded bg-surface-variant text-[10px] font-bold text-on-surface">16+</span>
+                            </div>
+                            <h3 class="font-headline-md text-[15px] font-bold text-on-surface truncate">El Despertar de
+                                Kronos</h3>
+                            <div class="flex items-center gap-1.5 text-body-sm text-body-sm text-on-surface-variant">
+                                <span>Fantasía</span>
+                                <span>•</span>
+                                <span>Aventura</span>
+                                <span>•</span>
+                                <span>Épica</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Trending Card 5 -->
+                    <div class="relative group cursor-pointer rounded-lg overflow-hidden bg-surface-container-low transition-all duration-300 hover:scale-105 hover:z-30 hover:shadow-2xl flex flex-col">
+                        <div class="relative aspect-video w-full overflow-hidden">
+                            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                 data-alt="Intense courtroom drama scene with heavy dramatic chiaroscuro lighting. An impassioned defense lawyer speaks before a packed jury in a classical oak-paneled supreme courtroom with rays of light cutting through dusty air."
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg7HEGpoNB1V6rkMP-xML5QVIz778cm-PqTAAaObyG6ULJl7FGxn4vBYqIDNxlRw-Rlw5Yu3q088NSAnbEvmw8GcC1n8MtoWFtA5hZhjdJdzmnwqPI4yf1dymMuo2Wlz4m_Vt_bzMR50JehnJaLaNE90WU8ypOMUeHYpMPAJAy8eULwKrONUGWE13P_AYEP93gg6VyHr-R5IDVsYH2Yz8kbPyB83gEAknR2KJahWcHjsAgi51r6HbX"/>
+                            <span class="absolute top-2 left-2 px-1.5 py-0.5 rounded-sm bg-primary-container text-white font-badge-spec text-badge-spec uppercase">TOP 5</span>
+                        </div>
+                        <div class="p-space-sm flex flex-col gap-1.5 bg-surface-container">
+                            <div class="flex items-center justify-between">
+                                <span class="font-label-md text-label-md font-bold text-secondary">89% Coincidencia</span>
+                                <span class="px-1.5 py-0.5 rounded bg-surface-variant text-[10px] font-bold text-on-surface">16+</span>
+                            </div>
+                            <h3 class="font-headline-md text-[15px] font-bold text-on-surface truncate">El Último
+                                Veredicto</h3>
+                            <div class="flex items-center gap-1.5 text-body-sm text-body-sm text-on-surface-variant">
+                                <span>Drama Legal</span>
+                                <span>•</span>
+                                <span>Crimen</span>
+                                <span>•</span>
+                                <span>Intriga</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Row 3: Videojuegos destacados de Netflix (Interactive Gaming Section) -->
+            <section
+                    class="flex flex-col gap-space-md group/row relative px-margin-mobile md:px-margin-tablet xl:px-margin bg-surface-container-lowest/80 py-space-xl rounded-xl mx-2 md:mx-6 shadow-2xl">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+                    <div class="flex flex-col gap-1">
+                        <div class="flex items-center gap-space-xs text-tertiary">
+                            <span class="material-symbols-outlined text-[22px]">sports_esports</span>
+                            <span class="font-label-sm text-label-sm font-black uppercase tracking-wider">Juegos móviles y de consola</span>
+                        </div>
+                        <h2 class="font-headline-xl text-headline-xl text-on-surface font-extrabold flex items-center gap-2">
+                            Videojuegos destacados de Netflix
+                        </h2>
+                        <div class="flex flex-wrap items-center gap-space-md text-body-sm text-body-sm text-on-surface-variant mt-1">
+                            <span class="flex items-center gap-1 text-secondary"><span
+                                    class="material-symbols-outlined text-[16px]">check_circle</span> Incluido con tu suscripción</span>
+                            <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">block</span> Sin anuncios ni micropagos</span>
+                            <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">cloud_sync</span> Cloud Play / Descarga directa</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 self-end md:self-center">
+                        <button aria-label="Anterior juego"
+                                class="w-9 h-9 rounded-full bg-surface-container-high hover:bg-surface-variant flex items-center justify-center text-on-surface transition-colors"
+                                onclick="scrollRow('games-row', -1)">
+                            <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+                        </button>
+                        <button aria-label="Siguiente juego"
+                                class="w-9 h-9 rounded-full bg-surface-container-high hover:bg-surface-variant flex items-center justify-center text-on-surface transition-colors"
+                                onclick="scrollRow('games-row', 1)">
+                            <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Gaming Grid Row with Custom Vertical Aspect Badges -->
+                <div class="grid grid-flow-col auto-cols-[78%] sm:auto-cols-[44%] md:auto-cols-[30%] lg:auto-cols-[22%] xl:auto-cols-[18.5%] gap-gutter overflow-x-auto no-scrollbar scroll-smooth pt-2 pb-3"
+                     id="games-row">
+                    <!-- Game 1: Hades -->
+                    <div class="group relative flex flex-col bg-surface-container rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_30px_rgba(229,9,20,0.25)] cursor-pointer">
+                        <div class="relative aspect-[3/4] w-full overflow-hidden bg-surface-container-high">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                 data-alt="Action RPG video game artwork featuring a fiery Greek mythology hero holding an incandescent flaming blade standing amidst stylized dark underworld magma streams, demonic skulls, and ornate baroque blood-red pillars. Vibrant comic-book artstyle with high contrast."
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmDZR83eJbDj04y3vwA4Uht-YLRvwPeh0OuzsxBlguT2PrDIDGFudZ6Xig09oyE_q8xy1KXzPpwsIasweyk1HKmwwRWdtsWbAfD8cFetn6FKmcxL9g5gbozQ95r22sOFrJKfpwGjyJyH_8jdoNU2gbKaIwVQYcU_MJ_Sni-WcT1WcewwlU0_y_NPR5r4cNL7WQzkrfLmgJOnr-K5Wu1iCkA6d23P8pIl9UWn0oh1jSxLOClXlohSMG"/>
+                            <div class="absolute top-2 left-2 bg-black/70 backdrop-blur-md px-2 py-0.5 rounded text-[10px] font-bold text-tertiary flex items-center gap-1">
+                                <span class="material-symbols-outlined text-[12px]">gamepad</span> Netflix Edition
+                            </div>
+                            <div class="absolute bottom-2 right-2 bg-primary-container text-white px-2 py-1 rounded text-badge-spec font-bold uppercase shadow-lg">
+                                Jugar ahora
+                            </div>
+                        </div>
+                        <div class="p-space-sm flex flex-col gap-1">
+                            <h4 class="font-headline-md text-[16px] font-bold text-on-surface group-hover:text-tertiary transition-colors">
+                                Hades: Nether Realm</h4>
+                            <span class="font-body-sm text-body-sm text-on-surface-variant">Roguelike • Acción Hack &amp; Slash</span>
+                        </div>
+                    </div>
+                    <!-- Game 2: Oxenfree II -->
+                    <div class="group relative flex flex-col bg-surface-container rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_30px_rgba(114,213,225,0.25)] cursor-pointer">
+                        <div class="relative aspect-[3/4] w-full overflow-hidden bg-surface-container-high">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                 data-alt="Eerie supernatural narrative adventure video game artwork. A young woman standing on a foggy Pacific Northwest coastline holds an old transistor radio emitting mysterious glowing electromagnetic radio waves into a storm-darkened twilight sky. Neon teal and violet chromatic aberration."
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbuPnB4ZnfdR6OfXxc5acg6w5931ApoA5_O7ljUuFco0wFA3q5Amm7-rdYswJOEZ-bBRKcB6mRv_i5JonygjYlZeEZgZC0BCOA5pOr1UBLjscxnDl0dDokNY4DU28VE9D984wX-BULVprAiKYwFmWxBUhSkH_Az2jWrzykTSzTgpG2k-Psj4RenA9WWMy8mKuTeUByQPZjLnMT1yUNLxZn1oZEDztfwfOcC2tX-VkDHKt3QOKyLi1x"/>
+                            <div class="absolute top-2 left-2 bg-black/70 backdrop-blur-md px-2 py-0.5 rounded text-[10px] font-bold text-tertiary flex items-center gap-1">
+                                <span class="material-symbols-outlined text-[12px]">gamepad</span> Exclusivo
+                            </div>
+                            <div class="absolute bottom-2 right-2 bg-white text-black px-2 py-1 rounded text-badge-spec font-bold uppercase shadow-lg">
+                                Instalar
+                            </div>
+                        </div>
+                        <div class="p-space-sm flex flex-col gap-1">
+                            <h4 class="font-headline-md text-[16px] font-bold text-on-surface group-hover:text-tertiary transition-colors">
+                                Oxenfree II: Lost Signals</h4>
+                            <span class="font-body-sm text-body-sm text-on-surface-variant">Narrativo • Misterio Sci-Fi</span>
+                        </div>
+                    </div>
+                    <!-- Game 3: Dead Cells -->
+                    <div class="group relative flex flex-col bg-surface-container rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_30px_rgba(85,224,116,0.25)] cursor-pointer">
+                        <div class="relative aspect-[3/4] w-full overflow-hidden bg-surface-container-high">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                 data-alt="Pixel-art stylized dark fantasy video game poster. A headless rogue prisoner with a blazing purple flame head wielding twin daggers stands over the ruins of a sprawling medieval Gothic castle under a blood moon. Fast-paced roguevania mood."
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAQQbBY7UwYUDIfpJKaViSGBqqW2bQe44ULiHn3LbifOezZag2kGuRUA9-xxpMmpzQfkf8K2H49H5d60BOhyNviIbwTfaFpg4QXyVZ5JmJr4Oypvybb8mKCbjuwJESZt1y30YV7IRMLTfg5eeJGZWl_A2v8N4LwLVx21ambSzEV7u3Ujz5jtOfnf0Ehtm5tv6xIbD1FF9GsGt3buWvMbUnz9dJRkhaVBuYndOs8XAerr95j2R_rVOv"/>
+                            <div class="absolute top-2 left-2 bg-black/70 backdrop-blur-md px-2 py-0.5 rounded text-[10px] font-bold text-tertiary flex items-center gap-1">
+                                <span class="material-symbols-outlined text-[12px]">gamepad</span> DLCs Incluidos
+                            </div>
+                            <div class="absolute bottom-2 right-2 bg-primary-container text-white px-2 py-1 rounded text-badge-spec font-bold uppercase shadow-lg">
+                                Jugar ahora
+                            </div>
+                        </div>
+                        <div class="p-space-sm flex flex-col gap-1">
+                            <h4 class="font-headline-md text-[16px] font-bold text-on-surface group-hover:text-tertiary transition-colors">
+                                Dead Cells: Immortality</h4>
+                            <span class="font-body-sm text-body-sm text-on-surface-variant">Metroidvania • Combate 2D</span>
+                        </div>
+                    </div>
+                    <!-- Game 4: GTA San Andreas -->
+                    <div class="group relative flex flex-col bg-surface-container rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl cursor-pointer">
+                        <div class="relative aspect-[3/4] w-full overflow-hidden bg-surface-container-high">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                 data-alt="Classic west coast 90s city video game poster in vibrant vector illustration. Lowrider cars parked under palm trees with golden California sunset reflecting on polished chrome. Urban open world game aesthetic."
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBw9tG83TMvcC9xOihygZZFVBOWiGFFg76E1GiY2DRNhz_fYQXvFkzpgkwAQFtSZ5FQJVAZYoBVzQHY0T6aYggopQFZVLOMdQHnmBXNEfoIdZq4WtAePRAPbHaWeGjHIei6jvmllkUtvOFLL_jY1Wsxr_dYRurdP77-b1NIgoSbMMm41FPhQ8U3o4OdMwyuonKaswT49YEgnIVIQ9e3lvTdnR7JerHGtl6p8_g8MzcKGUCOq6pHcObe"/>
+                            <div class="absolute top-2 left-2 bg-black/70 backdrop-blur-md px-2 py-0.5 rounded text-[10px] font-bold text-tertiary flex items-center gap-1">
+                                <span class="material-symbols-outlined text-[12px]">gamepad</span> Definitive Edition
+                            </div>
+                            <div class="absolute bottom-2 right-2 bg-primary-container text-white px-2 py-1 rounded text-badge-spec font-bold uppercase shadow-lg">
+                                Jugar ahora
+                            </div>
+                        </div>
+                        <div class="p-space-sm flex flex-col gap-1">
+                            <h4 class="font-headline-md text-[16px] font-bold text-on-surface group-hover:text-tertiary transition-colors">
+                                GTA: San Andreas</h4>
+                            <span class="font-body-sm text-body-sm text-on-surface-variant">Mundo Abierto • Clásico</span>
+                        </div>
+                    </div>
+                    <!-- Game 5: Stranger Things 1984 -->
+                    <div class="group relative flex flex-col bg-surface-container rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl cursor-pointer">
+                        <div class="relative aspect-[3/4] w-full overflow-hidden bg-surface-container-high">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                 data-alt="Retro 16-bit arcade video game illustration featuring four kids on bicycles looking toward a shadowy paranormal laboratory fence under red lightning storm clouds. Authentic 1980s retro synthwave gaming vibe."
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuA58DGruTieYXig0JFwU90Lb-qp3j62UQzuumToupUV2fcKf4L4I2euDLEyZkO2DUyLJ1kq03z8i0O_uOjT3IGBN12MZINXvHGhgrY18nYjq7htUABxEi3_N6Qf5XO45FU7gvm8WjPiOKdXEl2GhgO_frvfwz0dpUal0YUL4F-fmdThErZGcz__UPdK0129vVUx0Kcw8RSxZZcbdsnQ2zyvxTsyzLtILkgfQvWFtwed9ei6oztaN1xo"/>
+                            <div class="absolute top-2 left-2 bg-black/70 backdrop-blur-md px-2 py-0.5 rounded text-[10px] font-bold text-tertiary flex items-center gap-1">
+                                <span class="material-symbols-outlined text-[12px]">gamepad</span> Retro Arcade
+                            </div>
+                            <div class="absolute bottom-2 right-2 bg-white text-black px-2 py-1 rounded text-badge-spec font-bold uppercase shadow-lg">
+                                Instalar
+                            </div>
+                        </div>
+                        <div class="p-space-sm flex flex-col gap-1">
+                            <h4 class="font-headline-md text-[16px] font-bold text-on-surface group-hover:text-tertiary transition-colors">
+                                Stranger Things: 1984</h4>
+                            <span class="font-body-sm text-body-sm text-on-surface-variant">Aventura • Puzzle &amp; Acción</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Row 4: Aclamadas por la crítica y nominadas -->
+            <section
+                    class="flex flex-col gap-space-sm group/row relative px-margin-mobile md:px-margin-tablet xl:px-margin">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-space-xs">
+                        <h2 class="font-headline-lg text-headline-lg text-on-surface hover:text-white transition-colors cursor-pointer flex items-center gap-1">
+                            Aclamadas por la crítica y nominadas
+                            <span class="material-symbols-outlined text-[18px] text-tertiary opacity-0 group-hover/row:opacity-100 transition-opacity">chevron_right</span>
+                        </h2>
+                        <span class="text-tertiary font-label-sm text-label-sm font-bold bg-tertiary-container/30 px-2 py-0.5 rounded-full hidden sm:inline">
+            Festivales y Premios
+          </span>
+                    </div>
+                    <div class="flex items-center gap-1 opacity-0 group-hover/row:opacity-100 transition-opacity">
+                        <button aria-label="Anterior"
+                                class="w-8 h-8 rounded-full bg-surface-container-high hover:bg-surface-variant flex items-center justify-center text-on-surface transition-colors"
+                                onclick="scrollRow('acclaimed-row', -1)">
+                            <span class="material-symbols-outlined text-[20px]">chevron_left</span>
+                        </button>
+                        <button aria-label="Siguiente"
+                                class="w-8 h-8 rounded-full bg-surface-container-high hover:bg-surface-variant flex items-center justify-center text-on-surface transition-colors"
+                                onclick="scrollRow('acclaimed-row', 1)">
+                            <span class="material-symbols-outlined text-[20px]">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="grid grid-flow-col auto-cols-[80%] sm:auto-cols-[45%] md:auto-cols-[30%] lg:auto-cols-[23.5%] gap-gutter overflow-x-auto no-scrollbar scroll-smooth py-2"
+                     id="acclaimed-row">
+                    <!-- Acclaimed Card 1 -->
+                    <div class="relative group cursor-pointer rounded-lg overflow-hidden bg-surface-container-low transition-all duration-300 hover:scale-105 hover:z-30 hover:shadow-2xl flex flex-col">
+                        <div class="relative aspect-video w-full overflow-hidden">
+                            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                 data-alt="Exquisite cinematic still of an elderly conductor directing an orchestra inside a grand gilded European opera hall. Golden dust particles dance in dramatic spotlights as emotional violins are performed."
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxqIpjYRKeHP6eaaosl7Fv1dMlTnKgIBYKiMiTybpLex3Mh4sn5Vm6sTNo7OYhvXVYNjCLQYIiqjiuuHHe3St7GjbItXMeBrt8BgaG1T508Pc75sd0-ZgYrGeXSzYyv2h4G13KZ91uiHdq_d9--lS9vdKVBjD20EzBqVDQAqvkCH9NjIPKH_7FH4j5K_eWiAN_Wc1rjX3thJgDkJDpvxjpxgcYtXeen5D1-uoiNLUdnik_ZwDAIcN9"/>
+                            <div class="absolute top-2 left-2 flex items-center gap-1 px-2 py-0.5 rounded bg-black/80 backdrop-blur-md">
+                                <span class="material-symbols-outlined text-secondary text-[14px]"
+                                      style="font-variation-settings: 'FILL' 1;">stars</span>
+                                <span class="font-label-sm text-label-sm font-bold text-white">99% Rotten Tomatoes</span>
+                            </div>
+                        </div>
+                        <div class="p-space-sm flex flex-col gap-1 bg-surface-container">
+                            <div class="flex items-center gap-2">
+                                <span class="px-1.5 py-0.2 bg-surface-variant rounded text-[10px] text-tertiary uppercase font-bold">Ganador 4 Premios Oscar</span>
+                                <span class="text-on-surface-variant text-[11px]">• 2h 38m</span>
+                            </div>
+                            <h3 class="font-headline-md text-[15px] font-bold text-on-surface truncate">Sinfonía de
+                                Medianoche</h3>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Una mirada
+                                magistral a la obsesión, la gloria artística y los sacrificios íntimos de la música
+                                contemporánea.</p>
+                        </div>
+                    </div>
+                    <!-- Acclaimed Card 2 -->
+                    <div class="relative group cursor-pointer rounded-lg overflow-hidden bg-surface-container-low transition-all duration-300 hover:scale-105 hover:z-30 hover:shadow-2xl flex flex-col">
+                        <div class="relative aspect-video w-full overflow-hidden">
+                            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                 data-alt="Stunning black and white high-contrast photographic still of two brothers standing on the edge of a towering coastal cliff overlooking rough stormy ocean waves. Wind whipping their heavy coats in cinematic melancholy."
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEDkCZQlwUF_qznWREBa7e1fBi6GztYwONjNITpcJ2kIzb0mQaFw9xcBxstsfPDfr0qURuw66-gS4keqKkfZIcwe0a8fvAO7Q97W7CAv8ZPOJO1PdHLjqmuUtfHoGqxfnuOVftS5H8pmlJVVhrITj8uph7yRqC4M9Jp6TsU_ehSRYifOgKsWx32QwFb89oHrKBT8wk4XuGe5047_4kCRsBql3Vr5JFg5DuNjm2b57cXEDAXh-7cCAh"/>
+                            <div class="absolute top-2 left-2 flex items-center gap-1 px-2 py-0.5 rounded bg-black/80 backdrop-blur-md">
+                                <span class="material-symbols-outlined text-secondary text-[14px]"
+                                      style="font-variation-settings: 'FILL' 1;">stars</span>
+                                <span class="font-label-sm text-label-sm font-bold text-white">Palma de Oro</span>
+                            </div>
+                        </div>
+                        <div class="p-space-sm flex flex-col gap-1 bg-surface-container">
+                            <div class="flex items-center gap-2">
+                                <span class="px-1.5 py-0.2 bg-surface-variant rounded text-[10px] text-tertiary uppercase font-bold">Cannes 2024</span>
+                                <span class="text-on-surface-variant text-[11px]">• 1h 56m</span>
+                            </div>
+                            <h3 class="font-headline-md text-[15px] font-bold text-on-surface truncate">Marea
+                                Silenciosa</h3>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Reconciliación
+                                fraternal en una aldea pesquera aislada de las costas nórdicas.</p>
+                        </div>
+                    </div>
+                    <!-- Acclaimed Card 3 -->
+                    <div class="relative group cursor-pointer rounded-lg overflow-hidden bg-surface-container-low transition-all duration-300 hover:scale-105 hover:z-30 hover:shadow-2xl flex flex-col">
+                        <div class="relative aspect-video w-full overflow-hidden">
+                            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                 data-alt="Breathtaking wide view of the Himalayan summit bathed in twilight purple glow with mountaineers tethered along a razor-sharp ridge under vivid celestial aurora borealis."
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRIUNF08NhTlcVrQKlSjdamq_Xzsxz6agbBWn6Ntv1x9h7_8xrqxFa1ls77mzUV-aIyYLcUk-wa8lI9nH_wPYWcVouehfpcbmhi1UqKaHIvrl1PavJTVGUP7FiSs-NdYMOKrEcg_3EDFq4R8X6wDx2gXqDwkYDsP1i61k--NfYBzZvJ8EDi0qCPhFQ2MOc6Kg_o1Hr1CmdRuU_waQxnlHvRCgh8nlzBJ8LOl_GTX3Adps02BWi0Pqt"/>
+                            <div class="absolute top-2 left-2 flex items-center gap-1 px-2 py-0.5 rounded bg-black/80 backdrop-blur-md">
+                                <span class="material-symbols-outlined text-secondary text-[14px]"
+                                      style="font-variation-settings: 'FILL' 1;">stars</span>
+                                <span class="font-label-sm text-label-sm font-bold text-white">96% Coincidencia</span>
+                            </div>
+                        </div>
+                        <div class="p-space-sm flex flex-col gap-1 bg-surface-container">
+                            <div class="flex items-center gap-2">
+                                <span class="px-1.5 py-0.2 bg-surface-variant rounded text-[10px] text-tertiary uppercase font-bold">Mejor Documental</span>
+                                <span class="text-on-surface-variant text-[11px]">• 1h 42m</span>
+                            </div>
+                            <h3 class="font-headline-md text-[15px] font-bold text-on-surface truncate">Cumbres de
+                                Hielo</h3>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Una expedición sin
+                                precedentes a las zonas más inhóspitas del planeta.</p>
+                        </div>
+                    </div>
+                    <!-- Acclaimed Card 4 -->
+                    <div class="relative group cursor-pointer rounded-lg overflow-hidden bg-surface-container-low transition-all duration-300 hover:scale-105 hover:z-30 hover:shadow-2xl flex flex-col">
+                        <div class="relative aspect-video w-full overflow-hidden">
+                            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                 data-alt="Richly painted oil-portrait aesthetic of a 1920s jazz speakeasy in Harlem. Musicians playing brass saxophones and trumpets under amber lanterns while stylish patrons converse in velvet booths."
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPmKQ0Lr0yt9o7J1zFS6_ugacsTLli0Kh5qlMl1KKHl2tTivHbb0qtHvHiYKCCuKSLZsgCjjjzrT4BaQxPX2aKatfeG6AUIW2RaChKWQu7AwKPlF5i7si4k1eFHfojfiVMgCiUFhrOpsFVcG_WR-BqpxFLiFR1sCJ9Xgx89cItpSfIp-kfzStoEhPTvGCV1HFOCRNdfS7L_MWIGBSvqNDLmXIQUg7uvTj8RUql9hrC_VLwSK8rgD2T"/>
+                            <div class="absolute top-2 left-2 flex items-center gap-1 px-2 py-0.5 rounded bg-black/80 backdrop-blur-md">
+                                <span class="material-symbols-outlined text-secondary text-[14px]"
+                                      style="font-variation-settings: 'FILL' 1;">stars</span>
+                                <span class="font-label-sm text-label-sm font-bold text-white">98% Coincidencia</span>
+                            </div>
+                        </div>
+                        <div class="p-space-sm flex flex-col gap-1 bg-surface-container">
+                            <div class="flex items-center gap-2">
+                                <span class="px-1.5 py-0.2 bg-surface-variant rounded text-[10px] text-tertiary uppercase font-bold">Globo de Oro</span>
+                                <span class="text-on-surface-variant text-[11px]">• 2h 14m</span>
+                            </div>
+                            <h3 class="font-headline-md text-[15px] font-bold text-on-surface truncate">Harlem Blue
+                                Notes</h3>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">El nacimiento de
+                                la revolución sonora que transformó la cultura musical global.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- Inline Script for Carousel Scrolling and Micro-interactions -->
+        <script>
+            function scrollRow(rowId, direction) {
+                const row = document.getElementById(rowId);
+                if (!row) return;
+                const scrollAmount = row.clientWidth * 0.75 * direction;
+                row.scrollBy({left: scrollAmount, behavior: 'smooth'});
+            }
+
+            const audioBtn = document.getElementById('hero-audio-toggle');
+            const audioIcon = document.getElementById('hero-audio-icon');
+            let isMuted = true;
+
+            if (audioBtn && audioIcon) {
+                audioBtn.addEventListener('click', () => {
+                    isMuted = !isMuted;
+                    audioIcon.textContent = isMuted ? 'volume_off' : 'volume_up';
+                });
+            }
+        </script>
+    </div>
+</main>
+<footer class="w-full bg-surface-container-lowest text-on-surface-variant/70 mt-space-2xl pt-space-2xl pb-space-xl">
+    <div class="w-full max-w-6xl mx-auto px-margin-mobile md:px-margin-tablet xl:px-margin"><p
+            class="font-body-md text-body-md mb-space-lg"><a
+            class="hover:underline text-on-surface-variant hover:text-on-surface" data-path="centro-de-ayuda" href="#">¿Preguntas?
+        Contáctanos.</a></p>
+        <nav class="grid grid-cols-2 md:grid-cols-4 gap-y-space-md gap-x-space-lg mb-space-xl"><a
+                class="font-body-sm text-body-sm hover:underline hover:text-on-surface transition-colors"
+                data-path="audio-descriptivo" href="#">Audio descriptivo</a><a
+                class="font-body-sm text-body-sm hover:underline hover:text-on-surface transition-colors"
+                data-path="centro-de-ayuda" href="#">Centro de ayuda</a><a
+                class="font-body-sm text-body-sm hover:underline hover:text-on-surface transition-colors"
+                data-path="tarjetas-de-regalo" href="#">Tarjetas de regalo</a><a
+                class="font-body-sm text-body-sm hover:underline hover:text-on-surface transition-colors"
+                data-path="prensa" href="#">Prensa</a><a
+                class="font-body-sm text-body-sm hover:underline hover:text-on-surface transition-colors"
+                data-path="relaciones-con-inversionistas" href="#">Relaciones con inversionistas</a><a
+                class="font-body-sm text-body-sm hover:underline hover:text-on-surface transition-colors"
+                data-path="empleo" href="#">Empleo</a><a
+                class="font-body-sm text-body-sm hover:underline hover:text-on-surface transition-colors"
+                data-path="terminos-de-uso" href="#">Términos de uso</a><a
+                class="font-body-sm text-body-sm hover:underline hover:text-on-surface transition-colors"
+                data-path="privacidad" href="#">Privacidad</a><a
+                class="font-body-sm text-body-sm hover:underline hover:text-on-surface transition-colors"
+                data-path="avisos-legales" href="#">Avisos legales</a><a
+                class="font-body-sm text-body-sm hover:underline hover:text-on-surface transition-colors"
+                data-path="preferencias-de-cookies" href="#">Preferencias de cookies</a><a
+                class="font-body-sm text-body-sm hover:underline hover:text-on-surface transition-colors"
+                data-path="informacion-corporativa" href="#">Información corporativa</a><a
+                class="font-body-sm text-body-sm hover:underline hover:text-on-surface transition-colors"
+                data-path="contactanos" href="#">Contáctanos</a></nav>
+        <div class="mb-space-lg">
+            <button class="inline-flex items-center gap-space-xs px-space-md py-space-sm bg-surface-container-high hover:bg-surface-variant text-on-surface font-body-sm text-body-sm rounded-lg transition-colors"
+                    type="button"><span class="material-symbols-outlined text-[16px]">tag</span>Código de servicio
+            </button>
+        </div>
+        <p class="font-body-sm text-body-sm text-on-surface-variant/50">© 2024 Netflix, Inc. Todos los derechos
+            reservados.</p></div>
+</footer>
+</body>
+</html>
