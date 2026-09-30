@@ -1,0 +1,17 @@
+{
+    "name": "matomas/netflixsemi",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Matomas\\Netflixsemi\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Miguel A. Tomás"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
