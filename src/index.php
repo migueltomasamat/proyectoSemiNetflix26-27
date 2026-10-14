@@ -2,9 +2,26 @@
     include_once "./vendor/autoload.php";
 
     use Phroute\Phroute\RouteCollector;
+    use Matomas\Netflixsemi\Controllers\UserContoller;
 
     $router= new RouteCollector();
 
+    //Rutas de usuario
+$router->get('/user/create',[UserContoller::class,'create']);
+$router->get('/user/edit',[UserContoller::class,'edit']);
+    $router->get('/user/{id}',[UserContoller::class,'show']);
+    $router->get('/user',[UserContoller::class,'index']);
+    $router->post('/user',[UserContoller::class,'store']);
+    $router->put('/user/{id}',[UserContoller::class,'update']);
+    $router->delete('/user/{id}',[UserContoller::class,'destroy']);
+
+
+
+
+
+
+
+    //Ejemplos vistos en clase
     $router->get('/admin',function (){
        include_once "app/Views/backend/backend.index.php";
     });
@@ -23,6 +40,11 @@
 
     $router->get('/',function(){
        include_once "app/Views/frontend/frontend.html";
+    });
+
+    $router->get('/password',function(){
+        include_once "functions/auxiliar_functions.php";
+        return generatePassword(32);
     });
 
 
