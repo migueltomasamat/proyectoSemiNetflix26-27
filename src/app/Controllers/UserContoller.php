@@ -3,14 +3,19 @@
 namespace Matomas\Netflixsemi\Controllers;
 
 use Matomas\Netflixsemi\Interfaces\ControllerInterface;
+use Matomas\Netflixsemi\Models\UserModel;
 
 class UserContoller implements ControllerInterface
 {
 
     public function index()
     {
-        return "Estoy en el index de usuario";
-        // TODO: Implement index() method.
+        //Tengo que consultar el modelo para obtener todos los usuarios de la base de datos
+        $usuarios = UserModel::getAllUsers();
+        //var_dump($usuarios);
+
+        //Tengo que mostrar en una vista un listado de todos los usuarios que he obtenido en el punto anterior
+        include_once "app/Views/backend/backend.user.index.php";
     }
 
     public function show($id)

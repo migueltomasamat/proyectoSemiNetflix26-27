@@ -14,10 +14,10 @@
         rel="canonical"
         href="https://getbootstrap.com/docs/5.3/examples/dashboard/"
     />
-    <script src="app/Views/backend/js/color-modes.js"></script>
-    <link href="app/Views/backend/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="/app/Views/backend/js/color-modes.js"></script>
+    <link href="/app/Views/backend/css/bootstrap.min.css" rel="stylesheet" />
     <meta name="theme-color" content="#712cf9" />
-    <link href="app/Views/backend/css/dashboard.css" rel="stylesheet" />
+    <link href="/app/Views/backend/css/dashboard.css" rel="stylesheet" />
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;

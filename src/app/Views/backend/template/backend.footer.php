@@ -2,7 +2,7 @@
 </div>
 </div>
 <script
-    src="app/Views/backend/js/bootstrap.bundle.min.js"
+    src="/app/Views/backend/js/bootstrap.bundle.min.js"
     class="astro-vvvwv3sm"
 ></script>
 <script
@@ -11,7 +11,7 @@
     crossorigin="anonymous"
     class="astro-vvvwv3sm"
 ></script>
-<script src="app/Views/backend/js/dashboard.js" class="astro-vvvwv3sm"></script>
+<script src="/app/Views/backend/js/dashboard.js" class="astro-vvvwv3sm"></script>
 </body>
 </html>
 

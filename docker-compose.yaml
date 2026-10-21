@@ -40,9 +40,9 @@ services:
       - proyecto1
     environment:
       MARIADB_ROOT_PASSWORD: toor
-      MARIADB_DATABASE: proyecto1
-      MARIADB_USER: miguela
-      MARIADB_PASSWORD: aleugim
+      MARIADB_DATABASE: ${MARIADB_DATABASE_NAME:-proyecto}
+      MARIADB_USER: ${MARIADB_DATABASE_USER:-proyecto}
+      MARIADB_PASSWORD: ${MARIADB_DATABASE_PASSWORD:-proyecto}
     command:
       --default-authentication-plugin=mysql_native_password
 

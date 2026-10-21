@@ -7,8 +7,8 @@
     $router= new RouteCollector();
 
     //Rutas de usuario
-$router->get('/user/create',[UserContoller::class,'create']);
-$router->get('/user/edit',[UserContoller::class,'edit']);
+    $router->get('/user/create',[UserContoller::class,'create']);
+    $router->get('/user/edit',[UserContoller::class,'edit']);
     $router->get('/user/{id}',[UserContoller::class,'show']);
     $router->get('/user',[UserContoller::class,'index']);
     $router->post('/user',[UserContoller::class,'store']);

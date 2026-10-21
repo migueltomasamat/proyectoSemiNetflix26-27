@@ -107,6 +107,28 @@ class User
         return $this;
     }
 
+    public static function createFromArray(array $userData):User{
+
+        $usuario = new User();
+
+        $usuario->setId($userData["id"]);
+        $usuario->setName($userData["name"]);
+        $usuario->setEmail($userData["email"]);
+        $usuario->setPassword($userData["password"]);
+        $usuario->setRole(UserRole::fromString($userData["role"]));
+        $usuario->setBirthdate(DateTime::createFromFormat('Y-m-d',$userData["birthdate"]));
+
+        return $usuario;
+    }
+
+    public static function createMultipleUsersFromArray(array $usersData):array{
+        $usuarios=[];
+        foreach ($usersData as $datosUsuario){
+            $usuarios[]=User::createFromArray($datosUsuario);
+        }
+        return $usuarios;
+    }
+
 
 
 
