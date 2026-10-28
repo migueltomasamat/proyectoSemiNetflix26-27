@@ -2,6 +2,7 @@
 
 namespace Matomas\Netflixsemi\Controllers;
 
+use Matomas\Netflixsemi\Class\User;
 use Matomas\Netflixsemi\Interfaces\ControllerInterface;
 use Matomas\Netflixsemi\Models\UserModel;
 
@@ -32,7 +33,27 @@ class UserContoller implements ControllerInterface
 
     public function store()
     {
-        // TODO: Implement store() method.
+        //Deberia recoger los datos y validarlos
+        var_dump($_POST);
+        $resultado=User::validateUserCreation($_POST);
+        if (is_array($resultado)){
+            foreach ($resultado as $error){
+                echo $error;
+            }
+        }else{
+            //Deberia guardarlos en la base de datos
+            $newUser = User::createFromArray($_POST);
+            if (UserModel::saveUser($newUser)){
+                return "Se ha guardado bien el usuario";
+            }else{
+                return "No se ha guardado";
+            }
+
+        }
+
+        //Deberia contestar algo, una vista o una respuesta en json
+
+
     }
 
     public function edit($id)
@@ -42,7 +63,30 @@ class UserContoller implements ControllerInterface
 
     public function update($id)
     {
-        // TODO: Implement update() method.
+        $put=json_decode(file_get_contents("php://input"),true);
+
+        $put['id']=$id;
+        $resultado = User::validateUserEdition($put);
+        if (is_array($resultado)){
+            foreach ($resultado as $error){
+                echo $error;
+            }
+        }else{
+            $oldUser = UserModel::getUser($id);
+
+            $newUser = User::updateFromArray($oldUser,$put);
+
+            if (UserModel::updateUser($newUser)){
+                return "Se ha actualizado";
+            }else{
+                return "No se ha actualizado";
+            }
+        }
+
+
+
+
+
     }
 
     public function destroy($id)
