@@ -1,7 +1,7 @@
 </main>
 </div>
 </div>
-<script
+<footer class="footer mt-auto py-3 bg-body-tertiary"> <div class="container"> <span class="text-body-secondary">Proyecto Netflix Semipresencial 2026-2027</span> </div> </footer><script
     src="/app/Views/backend/js/bootstrap.bundle.min.js"
     class="astro-vvvwv3sm"
 ></script>

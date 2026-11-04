@@ -115,12 +115,15 @@ class User
         $usuario = new User();
 
         if (isset($userData['id'])){
+            //El usuario se lee de la base de datos
             $usuario->setId($userData["id"]);
+            $usuario->setPassword($userData['password']);
+        }else{
+            //Los datos de un usuario vienen de un formulario o de una request API
+            $usuario->setPassword(password_hash($userData["password"],PASSWORD_DEFAULT));
         }
-
         $usuario->setName($userData["name"]);
         $usuario->setEmail($userData["email"]);
-        $usuario->setPassword(password_hash($userData["password"],PASSWORD_DEFAULT));
         $usuario->setRole(UserRole::fromString($userData["role"]));
         $usuario->setBirthdate(DateTime::createFromFormat('Y-m-d',$userData["birthdate"]));
 

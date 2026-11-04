@@ -5,13 +5,19 @@
     ?>
 <!-- Código en HTML de la parte central de mi vista-->
 
-
+    <div class="mb-3">
+        <label for="in_name">Nombre de usuario:</label>
         <input type="text" class="form-control" name="name" id="in_name" placeholder="Introduce el nombre del usuario" value="<?=$usuario->getName()?>">
-        <div class="form-group">
-            <label for="in_email">Email address</label>
-            <input type="email" class="form-control" name="email" id="in_email" placeholder="Introduce el email del usuario" required value="<?=$usuario->getEmail()?>">
-        </div>
-        <input type="password" class="form-control" name="password" id="in_password" placeholder="Introduce el password del usuario">
+    </div>
+    <div class="mb-3">
+        <label for="in_email">Correo electrónico del usuario:</label>
+        <input type="email" class="form-control" name="email" id="in_email" placeholder="Introduce el email del usuario" required value="<?=$usuario->getEmail()?>">
+    </div>
+    <div class="mb-3">
+    <label for="in_password">Contraseña de usuario:</label>
+    <input type="password" class="form-control" name="password" id="in_password" placeholder="Déjalo en blanco si no deseas modificarlo">
+    </div>
+    <div class="mb-3">
         <select type="text" class="form-control"name="role" id="se_role">
             <?php
                 foreach (\Matomas\Netflixsemi\Enum\UserRole::toArray() as $valor){
@@ -23,9 +29,15 @@
                 }
             ?>
         </select>
+    </div>
+    <div class="mb-3">
+        <label for="in_date">Fecha de nacimiento del usuario:</label>
         <input type="date" class="form-control" name="birthdate" id="in_date" placeholder="Introduce el fecha de nacimiento del usuario" value="<?=$usuario->getBirthdate()->format('Y-m-d')?>">
-    <button onclick="put()" class="btn btn-primary">Editar Usurario</button>
-    <button onclick="borrar()" class="btn btn-danger">Borrar Usurario</button>
+    </div>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button onclick="put()" class="btn btn-primary">Editar Usurario</button>
+        <button onclick="borrar()" class="btn btn-danger">Borrar Usurario</button>
+    </div>
 
     <script>
 
@@ -34,13 +46,23 @@
             const myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/json");
 
-            const raw = JSON.stringify({
-                "name": document.getElementById('in_name').value,
-                "email": document.getElementById('in_email').value,
-                "birthdate": document.getElementById('in_date').value,
-                "role": document.getElementById('se_role').value,
-                "password": document.getElementById('in_password').value
-            });
+            let password = document.getElementById('in_password').value;
+            if (password===""){
+                const raw = JSON.stringify({
+                    "name": document.getElementById('in_name').value,
+                    "email": document.getElementById('in_email').value,
+                    "birthdate": document.getElementById('in_date').value,
+                    "role": document.getElementById('se_role').value,
+                });
+            }else{
+                const raw = JSON.stringify({
+                    "name": document.getElementById('in_name').value,
+                    "email": document.getElementById('in_email').value,
+                    "birthdate": document.getElementById('in_date').value,
+                    "role": document.getElementById('se_role').value,
+                    "password": document.getElementById('in_password').value
+                });
+            }
 
             const requestOptions = {
                 method: "PUT",
