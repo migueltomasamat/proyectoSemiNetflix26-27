@@ -28,13 +28,12 @@ class UserContoller implements ControllerInterface
 
     public function create()
     {
-        // TODO: Implement create() method.
+        include_once "app/Views/backend/backend.user.create.php";
     }
 
     public function store()
     {
         //Deberia recoger los datos y validarlos
-        var_dump($_POST);
         $resultado=User::validateUserCreation($_POST);
         if (is_array($resultado)){
             foreach ($resultado as $error){
@@ -44,7 +43,7 @@ class UserContoller implements ControllerInterface
             //Deberia guardarlos en la base de datos
             $newUser = User::createFromArray($_POST);
             if (UserModel::saveUser($newUser)){
-                return "Se ha guardado bien el usuario";
+                header('Location: /user');
             }else{
                 return "No se ha guardado";
             }
@@ -58,7 +57,10 @@ class UserContoller implements ControllerInterface
 
     public function edit($id)
     {
-        // TODO: Implement edit() method.
+        $usuario = UserModel::getUserById($id);
+
+        include_once "app/Views/backend/backend.user.edit.php";
+
     }
 
     public function update($id)
@@ -72,7 +74,7 @@ class UserContoller implements ControllerInterface
                 echo $error;
             }
         }else{
-            $oldUser = UserModel::getUser($id);
+            $oldUser = UserModel::getUserById($id);
 
             $newUser = User::updateFromArray($oldUser,$put);
 
@@ -91,6 +93,40 @@ class UserContoller implements ControllerInterface
 
     public function destroy($id)
     {
-        // TODO: Implement destroy() method.
+        //Comprobamos que el usuario está en la BD
+        if (!UserModel::getUserById($id)){
+            header("Content-Type: application/json");
+            http_response_code(404);
+            return json_encode([
+                "error"=>true,
+                "message"=>"No se ha encontrado el usuario",
+                "code"=>404
+            ]);
+        }else{
+            if(UserModel::destroyUser($id)){
+                //Se ha destruido
+                header("Content-Type: application/json");
+                http_response_code(200);
+                return json_encode([
+                    "error"=>false,
+                    "message"=>"Se ha destruido el usuario $id",
+                    "code"=>200
+                ]);
+
+            }else{
+                header("Content-Type: application/json");
+                http_response_code(500);
+                return json_encode([
+                    "error"=>true,
+                    "message"=>"La base de datos no funciona",
+                    "code"=>500
+                ]);
+            }
+        }
+
+    }
+    public function wipeout(){
+
+        UserModel::destroyAllUsers();
     }
 }

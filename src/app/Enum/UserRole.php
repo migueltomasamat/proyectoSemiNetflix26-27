@@ -29,4 +29,11 @@ enum UserRole
         return $retorno;
     }
 
+    public static function toArray():array{
+        $array[]=UserRole::REGULAR->toString();
+        $array[]=UserRole::ADMIN->toString();
+        $array[]=UserRole::EDITOR->toString();
+        return $array;
+    }
+
 }

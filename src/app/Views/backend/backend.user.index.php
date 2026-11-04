@@ -3,7 +3,9 @@
     include_once "app/Views/backend/template/backend.aside.php";
     include_once "app/Views/backend/template/backend.main.title.php";
     ?>
-
+    <div>
+    <a href="/user/create"><button class="btn btn-primary">Crear Usuario</button></a>
+    </div>
     <table class="table">
         <thead>
         <tr>
@@ -13,6 +15,7 @@
             <th scope="col">Password</th>
             <th scope="col">Birthdate</th>
             <th scope="col">Type</th>
+            <th scope="col">Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -25,6 +28,8 @@
                     <td><?=$usuario->getPassword()?></td>
                     <td><?=$usuario->getBirthdate()->format('Y-m-d')?></td>
                     <td><?=$usuario->getRole()->toString()?></td>
+                    <?php echo "<td><a href='http://localhost:8080/user/".$usuario->getId()."/edit'>Editar</a></td>";?>
+
                 </tr>
         <?php } ?>
 

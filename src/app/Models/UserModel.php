@@ -73,7 +73,7 @@ class UserModel
 
 
     }
-    public static function getUser(int $id):User{
+    public static function getUserById(int $id):User|false{
 
         //Conexión a la base de datos
         $conexion="";
@@ -99,10 +99,49 @@ class UserModel
         //Ejecutar la consulta contra la BD
         $stmt->execute();
 
-        //Convertir los resultados a un array de instancias de tipo User
-        $resultados= $stmt->fetch(PDO::FETCH_ASSOC);
+        if($stmt->rowCount()===0){
+            return false;
+        }else {
+            //Convertir los resultados a un array de instancias de tipo User
+            $resultados = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        return User::createFromArray($resultados);
+            return User::createFromArray($resultados);
+        }
+    }
+    public static function getUserByEmail(string $email):User|false{
+
+        //Conexión a la base de datos
+        $conexion="";
+        try {
+            $conexion = new PDO(
+                "mysql:host=mariadb;dbname=netflix",
+                "miguel",
+                "leugim");
+
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        catch(PDOException $e){
+            echo $e->getMessage();
+        }
+
+        //Prepara la consulta que se va a utilizar
+
+        $sql="SELECT * from user where email=:email";
+        $stmt=$conexion->prepare($sql);
+
+        $stmt->bindValue("email",$email);
+
+        //Ejecutar la consulta contra la BD
+        $stmt->execute();
+
+        if($stmt->rowCount()==0){
+            return false;
+        }else {
+            //Convertir los resultados a un array de instancias de tipo User
+            $resultados = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return User::createFromArray($resultados);
+        }
     }
 
     public static function updateUser(User $user):bool{
@@ -135,9 +174,49 @@ class UserModel
         }else{
             return false;
         }
+    }
 
+    public static function destroyUser($id):bool{
 
+        $conexion ="";
+        try{
+            $conexion = new PDO("mysql:host=mariadb;dbname=netflix",
+                "miguel",
+                "leugim");
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
 
+        $sql="DELETE FROM user WHERE id=:id";
+        $stmt = $conexion->prepare($sql);
+
+        $stmt->bindValue("id",$id);
+
+        $stmt->execute();
+
+        return $stmt->rowCount();
+
+    }
+
+    public static function destroyAllUsers():bool{
+
+        $conexion ="";
+        try{
+            $conexion = new PDO("mysql:host=mariadb;dbname=netflix",
+                "miguel",
+                "leugim");
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+
+        $sql="TRUNCATE user";
+        $stmt = $conexion->prepare($sql);
+
+        $stmt->bindValue("id",$id);
+
+        $stmt->execute();
+
+        return $stmt->rowCount();
 
     }
 
