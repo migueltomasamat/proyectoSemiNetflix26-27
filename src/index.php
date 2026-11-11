@@ -4,6 +4,8 @@
     use Phroute\Phroute\RouteCollector;
     use Matomas\Netflixsemi\Controllers\UserContoller;
 
+    session_start();
+
     $router= new RouteCollector();
 
     //Rutas de usuario
@@ -14,7 +16,13 @@
     $router->post('/user',[UserContoller::class,'store']);
     $router->put('/user/{id}',[UserContoller::class,'update']);
     $router->delete('/user/{id}',[UserContoller::class,'destroy']);
-   $router->delete('/user',[UserContoller::class,'wipeout']);
+    $router->delete('/user',[UserContoller::class,'wipeout']);
+
+
+    //Login de usuario
+    $router->get('/login',[UserContoller::class,'showLogin']);
+    $router->post('/check-user',[UserContoller::class,'check']);
+    $router->get('/logout',[UserContoller::class,'logout']);
 
 
 
@@ -40,7 +48,7 @@
     });
 
     $router->get('/',function(){
-       include_once "app/Views/frontend/frontend.html";
+       include_once "app/Views/frontend/frontend.php";
     });
 
     $router->get('/password',function(){

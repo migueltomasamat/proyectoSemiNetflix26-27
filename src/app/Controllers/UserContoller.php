@@ -3,6 +3,7 @@
 namespace Matomas\Netflixsemi\Controllers;
 
 use Matomas\Netflixsemi\Class\User;
+use Matomas\Netflixsemi\Enum\UserRole;
 use Matomas\Netflixsemi\Interfaces\ControllerInterface;
 use Matomas\Netflixsemi\Models\UserModel;
 
@@ -128,5 +129,35 @@ class UserContoller implements ControllerInterface
     public function wipeout(){
 
         UserModel::destroyAllUsers();
+    }
+
+    public function showLogin(){
+
+        include_once "app/Views/frontend/login.html";
+    }
+
+    public function check(){
+
+        var_dump($_POST);
+        $usuario=UserModel::getUserByEmail($_POST['email']);
+        if (password_verify($_POST['password'],$usuario->getPassword())){
+            //Usuario esta logeado
+            $_SESSION['name']=$usuario->getName();
+            $_SESSION['id']=$usuario->getId();
+            $_SESSION['role']=$usuario->getRole()->toString();
+
+            if ($usuario->getRole()===UserRole::ADMIN){
+                header('Location: /admin');
+            }else{
+                header('Location: /');
+            }
+
+        }else{
+            echo "No se ha podido logear al usuario";
+        }
+    }
+    public function logout(){
+        session_destroy();
+        header('Location: /');
     }
 }

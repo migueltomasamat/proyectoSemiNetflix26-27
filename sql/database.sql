@@ -12,7 +12,8 @@ CREATE TABLE user(
     email varchar(255) unique,
     password varchar(255),
     role varchar(50),
-    birthdate date
+    birthdate date,
+    id_fovorite_movie varchar(32) references movie(uuid)
 );
 //
 CREATE TABLE movie(

@@ -17,6 +17,8 @@ class User
     private UserRole $role;
     private DateTime $birthdate;
 
+    private Movie $favoriteMovie;
+
     private array $watched;
 
     /**
@@ -116,11 +118,13 @@ class User
 
         if (isset($userData['id'])){
             $usuario->setId($userData["id"]);
+            $usuario->setPassword($userData['password']);
+        }else{
+            $usuario->setPassword(password_hash($userData["password"],PASSWORD_DEFAULT));
         }
 
         $usuario->setName($userData["name"]);
         $usuario->setEmail($userData["email"]);
-        $usuario->setPassword(password_hash($userData["password"],PASSWORD_DEFAULT));
         $usuario->setRole(UserRole::fromString($userData["role"]));
         $usuario->setBirthdate(DateTime::createFromFormat('Y-m-d',$userData["birthdate"]));
 
@@ -184,6 +188,49 @@ class User
         }
 
         return $oldUser;
+    }
+
+    public function addContent(Content $content):bool{
+        if (!$this->searchContent($content)){
+            $this->watched[]=$content;
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function deleteContent(Content $content):bool{
+        $posicion=$this->searchContent($content);
+        if($posicion!=false){
+            unset($this->watched[$posicion]);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function editContent(Content $content):bool{
+
+        $posicion = $this->searchContent($content);
+        if($posicion!=false){
+            $this->watched[$posicion]=$content;
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+
+    public function searchContent(Content $content):int|false{
+
+        for($i=0;$i<count($this->watched);$i++){
+
+            if ($content->getUuid()==$this->watched[$i]){
+                return $i;
+            }
+        }
+        return false;
     }
 
 

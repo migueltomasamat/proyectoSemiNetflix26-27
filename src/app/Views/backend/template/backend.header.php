@@ -286,6 +286,7 @@
         href="#"
     >Company name</a
     >
+    <button class="btn btn-success" ><?=$_SESSION['name']??'Usuario sin nombre'?></button>
     <ul class="navbar-nav flex-row d-md-none">
         <li class="nav-item text-nowrap">
             <button

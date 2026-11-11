@@ -176,11 +176,26 @@
                     type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span
                     class="absolute top-1 right-1 w-2 h-2 rounded-full bg-primary-container ring-2 ring-surface"></span>
             </button>
-            <div class="flex items-center gap-space-xs cursor-pointer group relative py-space-xs">
-                <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span
-                        class="material-symbols-outlined text-on-primary text-[18px]">person</span></div>
-                <span class="material-symbols-outlined text-[18px] text-on-surface-variant group-hover:text-on-surface transition-transform duration-200 group-hover:rotate-180">arrow_drop_down</span>
+
+            <?php if (isset($_SESSION['name'])){
+                echo "
+                <div class='flex items-center gap-space-xs cursor-pointer group relative py-space-xs'>
+                    <div class='w-8 h-8 rounded-full bg-primary flex items-center justify-center'><span
+                        class='material-symbols-outlined text-on-primary text-[18px]'>person</span></div>
+                <span class='material-symbols-outlined text-[18px] text-on-surface-variant group-hover:text-on-surface transition-transform duration-200 group-hover:rotate-180'>arrow_drop_down</span>
             </div>
+                
+                ";
+            }else{
+                echo "
+                <a href='/login'><button class='group flex items-center justify-center gap-space-xs px-space-xs py-space-sm bg-primary-container text-white font-headline-md text-headline-md rounded-lg shadow-2xl hover:bg-white/80 active:scale-95 transition-all duration-200' type='button'>
+                        <span>Iniciar Sesión</span>
+                    </button></a>
+                ";
+            }
+
+            ?>
+
         </div>
     </div>
 </header>
